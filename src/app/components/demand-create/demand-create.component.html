@@ -36,18 +36,18 @@
              class="w-full py-2 px-3 rounded-md border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
     </div> -->
 
-    <div *ngFor="let equipment of demands.equipmentDemands; let i = index;">
+    <div *ngFor="let equipmentd of demands; let i = index;">
       <label for="equipmentId{{i}}">Equipment ID:</label>
-      <input type="text" id="equipmentId{{i}}" [(ngModel)]="equipment.equipmentId" required>
+      <input type="text" id="equipmentId{{i}}" [(ngModel)]="equipmentd.equipmentId" required>
   
       <label for="startDate{{i}}">Start Date:</label>
-      <input type="text" id="startDate{{i}}" [(ngModel)]="equipment.startDate" required>
+      <input type="text" id="startDate{{i}}" [(ngModel)]="equipmentd.startDate" required>
   
       <label for="endDate{{i}}">End Date:</label>
-      <input type="text" id="endDate{{i}}" [(ngModel)]="equipment.endDate" required>
+      <input type="text" id="endDate{{i}}" [(ngModel)]="equipmentd.endDate" required>
   
-      <button type="button" (click)="removeEquipmentDemand(equipment)">Remove</button>
-      <button type="button" (click)="addEquipmentDemand(equipment)">Add Equipment</button>
+      <button type="button" (click)="removeEquipmentDemand(equipmentd)">Remove</button>
+      <button type="button" (click)="addEquipmentDemand(equipmentd)">Add Equipment</button>
     </div>
     <button type="submit" class="py-2 px-4 bg-indigo-500 text-white rounded-md hover:bg-indigo-600">Create Demand</button>
   </form>

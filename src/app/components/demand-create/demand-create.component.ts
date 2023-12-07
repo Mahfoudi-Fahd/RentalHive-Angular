@@ -1,24 +1,28 @@
 import { Component } from '@angular/core';
-import { CDemand, Demand } from '../../models/demand';
 import { DemandCreateService } from '../../services/demand-create.service';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { CEquipmentDemand } from '../../models/equipmentDemand';
+import { FormsModule } from '@angular/forms';
+import { Demand } from '../../models/demand';
 
 @Component({
   selector: 'app-demand',
   standalone: true,
-  imports: [RouterLink, CommonModule],
+  imports: [RouterLink, CommonModule, FormsModule],
   templateUrl: './demand-create.component.html',
   styleUrl: './demand-create.component.scss'
 })
 export class DemandCreateComponent {
   demands: Demand[] = [];
-  toSave: Demand = new CDemand();
-
+  
   equipments: CEquipmentDemand[] = []
+  toSave: Demand = {
+    equipmentDemands:  this.equipments
+  } as Demand;
+  constructor(private demandCreateService: DemandCreateService){
 
-  constructor(private demandCreateService: DemandCreateService){}
+  }
 
   ngOnInit(): void {
     this.demandCreateService.getDemands().subscribe((data: Demand[]) => {
